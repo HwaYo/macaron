@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('ready page:load', function() {
   $(".gifts").infinitescroll({
     navSelector: "nav.pagination",
     nextSelector: "nav.pagination a[rel=next]",
@@ -18,5 +18,18 @@ $(document).ready(function() {
   $('#recommend').on('click', function() {
     $('.gifts').infinitescroll('retrieve');
   });
-  
+
+  $('#gifts-container').on('click', '[data-target="#new-fund"]',function() {
+    var data = {
+      friend_id: $(this).data("friend-id"),
+      gift_id: $(this).data("gift-id")
+    };
+    console.log(data);
+    $.ajax({
+      url: "/funds/new",
+      data: data
+    }).done(function(result) {
+      $('#new-fund-body').html(result);
+    });
+  });
 });
