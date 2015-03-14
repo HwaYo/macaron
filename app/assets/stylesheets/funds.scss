@@ -21,6 +21,10 @@
   border-radius: 6px;
   padding: 10px;
   margin-bottom: 8px;
+
+  textarea{
+    resize:none;
+  }
 }
 
 #new-fund {
