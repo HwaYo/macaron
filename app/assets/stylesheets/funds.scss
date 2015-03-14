@@ -3,6 +3,7 @@
 }
 
 .gift-price {
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -44,4 +45,12 @@
   .contributor-image:first-child {
     margin-left: 0;
   }
+}
+
+.contribute-button {
+  margin-bottom: 30px;
+}
+
+.contribute-amount {
+  margin: 40px 0 30px 0;
 }
