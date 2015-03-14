@@ -5,7 +5,7 @@
   <p class="lead">마음에 드는 선물을 고르세요!</p>
 </div>
 <div class="container">
-  <div class="row gifts">
+  <div class="row gifts" id="gifts-container">
     <%= render @gifts %>
   </div>
   <div class="row">
@@ -17,4 +17,18 @@
 
 <div style="display: none">
 <%= paginate @gifts %>
+</div>
+
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="new-fund" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog new-fund-modal">
+    <div class="modal-content">
+      <div class="modal-body" id="new-fund-body">
+        
+      </div>
+    </div>
+  </div>
 </div>

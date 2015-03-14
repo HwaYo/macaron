@@ -3,6 +3,8 @@ class FundsController < ApplicationController
     @gift = Gift.find(params[:gift_id])
     @friend = Friend.find(params[:friend_id])
     @fund_form = FundForm.new(params)
+
+    render partial: "funds/new"
   end
 
   def create

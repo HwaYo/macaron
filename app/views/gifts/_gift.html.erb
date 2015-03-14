@@ -1,24 +1,22 @@
-<div class="col-md-3 gift-card">
-  <%= link_to new_fund_path(gift_id: gift.id, friend_id: params[:friend_id]) do %>
-    <div class="recommendation-item">
-      <div class="gift-image" style="background-image: url(<%= gift.image %>)"></div>
-      <div class="gift-info">
-        <div class="gift-name">
-          <h4><%= gift.name %></h4>
-        </div>
-        <p class="gift-price">
-          <%= number_to_currency gift.price, unit: '₩ ', precision: 0 %>
-        </p>
+<div class="col-md-3 gift-card" data-toggle="modal" data-target="#new-fund" data-gift-id="<%= gift.id %>" data-friend-id="<%= params[:friend_id] %>">
+  <div class="recommendation-item">
+    <div class="gift-image" style="background-image: url(<%= gift.image %>)"></div>
+    <div class="gift-info">
+      <div class="gift-name">
+        <h4><%= gift.name %></h4>
       </div>
-      <!-- <div class="gift-feeling">
-        <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
-          <a href="#" class="btn btn-default" role="button" style="
-        border-radius: 0;
-    ">Good</a>
-          <a href="#" class="btn btn-default" role="button">Bad</a>
-          <a href="#" class="btn btn-default" role="button">Pick</a>
-        </div>
-      </div> -->
+      <p class="gift-price">
+        <%= number_to_currency gift.price, unit: '₩ ', precision: 0 %>
+      </p>
     </div>
-  <% end %>
+    <!-- <div class="gift-feeling">
+      <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+        <a href="#" class="btn btn-default" role="button" style="
+      border-radius: 0;
+  ">Good</a>
+        <a href="#" class="btn btn-default" role="button">Bad</a>
+        <a href="#" class="btn btn-default" role="button">Pick</a>
+      </div>
+    </div> -->
+  </div>
 </div>
