@@ -1,1 +1,56 @@
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<body>
+  <img id="kakao-login" src="<%= asset_path('kakao_story.png') %>"/>
+  <div>
+    <p id="post-result"></p>
+  </div>
+
+</body>
+
+  <script>
+    // 사용할 앱의 Javascript 키를 설정해 주세요.
+    Kakao.init('83bcbdb62e754de52534c726ece4f0f7');
+
+    $(document).ready( function(){
+
+      $('#kakao-login').on('click', function(){
+        Kakao.Auth.login({
+          success: function() {
+            Kakao.API.request( {
+              url : '/v1/api/story/linkinfo',
+              data : {
+                url : "<%= @gift.link %>"
+              }
+            }).then(function(res) {
+              return Kakao.API.request( {
+                url : '/v1/api/story/post/link',
+                data : {
+                  link_info : res
+                }
+              });
+            }).then(function(res) {
+              return Kakao.API.request( {
+                url : '/v1/api/story/mystory',
+                data : { id : res.id }
+              });
+            }).then(function(res) {
+
+              // Notify that link is Sucessfully shared. Kakao Story url is res.url
+
+            }, function (err) {
+              alert(JSON.stringify(err));
+            });
+
+          },
+
+          fail: function(err) {
+            alert(JSON.stringify(err))
+          }
+        });
+      });
+    } );
+    
+  </script>
+</body>
+
 <%= @gift.inspect %>
