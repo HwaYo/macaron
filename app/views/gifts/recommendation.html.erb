@@ -1,0 +1,71 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Macaron</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Action</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- <div class="recommendation-header">
+  <div class="container">
+    <h1>선물이 추천되었습니다!</h1>
+    <p>
+      마음에 드는 선물을 고르세요!
+    </p>
+  </div>
+</div> -->
+<div class="recommendation-header2">
+  <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+  <h2>선물이 추천되었습니다!</h2>
+  <p class="lead">마음에 드는 선물을 고르세요!</p>
+</div>
+<div class="container">
+<!--   <div class="row">
+    <div class="recommendation-title">선물이 추천되었습니다! 마음에 드는 선물을 고르세요!</div>
+  </div>
+ -->  <div class="row">
+    <% @gifts.each do |gift| %>
+      <div class="col-md-3 gift-card">
+        <div class="recommendation-item">
+          <div class="gift-image" style="background-image: url(<%= gift.image %>)"></div>
+          <div class="gift-info">
+            <div class="gift-name">
+              <%= gift.name %>
+            </div>
+            <div class="gift-price">
+              <%= gift.price %>
+            </div>
+          </div>
+          <!-- <div class="gift-feeling">
+            <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+              <a href="#" class="btn btn-default" role="button" style="
+            border-radius: 0;
+        ">Good</a>
+              <a href="#" class="btn btn-default" role="button">Bad</a>
+              <a href="#" class="btn btn-default" role="button">Pick</a>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="recommendation-more col-md-4 col-md-offset-4">
+      <button type="button" class="btn btn-default btn-block">계속 추천받기</button>
+    </div>
+  </div>
+</div>
