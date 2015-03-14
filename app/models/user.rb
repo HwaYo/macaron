@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   def self.create_with_omniauth(auth)
-
     create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
@@ -8,12 +7,9 @@ class User < ActiveRecord::Base
       user.email = auth["info"]["email"]
       user.image = auth["info"]["image"]
       user.gender = auth["extra"]["raw_info"]["gender"]
-      user.token = auth["credentials"]["token"]
-    end
-  end
+      user.age = auth["extra"]["raw_info"]["age_range"]["min"]
 
-  def self.create_with_koala
-    create! do |user|
+      user.token = auth["credentials"]["token"]
     end
   end
 end

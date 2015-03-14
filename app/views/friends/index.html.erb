@@ -1,2 +1,30 @@
-<h1>Friends#index</h1>
-<p>Find me in app/views/friends/index.html.erb</p>
+
+
+<div class="container friends">
+  <div class="header">
+  </div>
+  <div class="friends-grid">
+    <div class="row">
+     <div class="col-sm-4 col-md-2">
+        <div class="thumbnail">
+          <img src="http://graph.facebook.com/<%= @user.uid %>/picture?height=192&width=192">
+          <div class="caption">
+            <p>나에게 선물하기</p>
+          </div>
+        </div>
+      </div>
+
+    <% (@friends*200).each do |f| %>
+      <div class="col-sm-4 col-md-2">
+        <div class="thumbnail">
+          <img src="http://graph.facebook.com/<%= f["id"] %>/picture?height=192&width=192">
+          <div class="caption">
+            <p><%= f["name"] %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+
+  </div>
+</div>
