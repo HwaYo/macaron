@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <meta property="og:image" content="<%= @fund.gift.image %>">
+  <meta property="og:description" content="<%= @fund.description %>">
+<% end %>
 <div class="container">
     <div class="col-md-8 gift-description">
       <div class="gift-image" style="background-image: url(<%= @fund.gift.image %>)"></div>
@@ -16,7 +20,7 @@
         <div class="clearfix"></div>
       </div>
       <div class="friend-information">
-        <%= submit_tag "참여하기", class: 'btn btn-lg btn-success btn-block pull-right'%>
+        <%= link_to "참여하기", new_fund_contribution_path(@fund), class: 'btn btn-lg btn-success btn-block pull-right'%>
 
         <h4>참여현황</h4>
         <h2><%= number_to_currency 100000, unit: '원', precision: 0, format: '%n%u' %></h2>
