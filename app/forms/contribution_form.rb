@@ -12,6 +12,16 @@ class ContributionForm
   attribute :payment, String
   attribute :contact, String
 
+  validates :amount, numericality: {
+    only_integer: true,
+    greater_than_or_equal_to: 0
+  }
+  validate :not_over_remain_amount
+
+  def fund
+    @fund = Fund.find(fund_id)
+  end
+
   def persisted?
     false
   end
@@ -38,5 +48,11 @@ private
       message: message,
       payment: payment
     })
+  end
+
+  def not_over_remain_amount
+    if self.fund.remain_amount < amount
+      errors.add(:amount, "최대 참여 가능 금액을 초과하였습니다.")
+    end
   end
 end

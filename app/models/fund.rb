@@ -3,4 +3,12 @@ class Fund < ActiveRecord::Base
   belongs_to :gift
   belongs_to :friend
   has_many :contributions
+
+  def total_amount
+    @total_amount ||= self.contributions.pluck(:amount).reduce(0, :+)
+  end
+
+  def remain_amount
+    @remain_amount ||= [0, self.gift.price - self.total_amount].max
+  end
 end

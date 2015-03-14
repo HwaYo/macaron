@@ -11,7 +11,7 @@
             <div class="form-inline pull-right">
               <div class="input-group">
                 <%= f.label :amount, class: "sr-only" %>
-                <%= f.text_field :amount, class: "form-control input-lg" %>
+                <%= f.text_field :amount, class: "form-control input-lg", type: "number", max: @fund.remain_amount %>
                 <div class="input-group-addon">원</div>
               </div>
             </div>

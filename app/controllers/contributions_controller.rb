@@ -1,14 +1,17 @@
 class ContributionsController < ApplicationController
   def new
+    @fund = Fund.find(params[:fund_id])
     @contribution_form = ContributionForm.new
   end
 
   def create
+    @fund = Fund.find(params[:fund_id])
     @contribution_form = ContributionForm.new(contribution_form_params)
+
     if @contribution_form.save
-      render plain: "ok"
+      redirect_to fund_path(@fund)
     else
-      render 'new'
+      render "new"
     end
   end
 
