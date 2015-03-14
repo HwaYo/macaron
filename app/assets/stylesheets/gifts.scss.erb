@@ -1,0 +1,89 @@
+// Place all the styles related to the gifts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container > .row > .gift-card {
+  padding-right: 5px;
+  padding-left: 5px;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.recommendation-header {
+  text-align: center;
+  margin: -20px 0 50px 0;
+  padding: 200px 0;
+  position: relative;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0,0,0,.1);
+  background: url("<%= asset_path('city_background.jpg') %>");
+
+  .glyphicon-gift {
+    font-size: 80px;
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+}
+
+.recommendation-title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+.recommendation-item {
+  border: 1px solid #cacaca;
+  border-radius: 6px;
+  margin-bottom: 15px;
+
+  .gift-image {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    width: 100%;
+    height: 300px;  
+  }
+
+  .gift-info {
+    padding: 5px;
+
+    .gift-name {
+      text-align: center;
+
+      h4 {
+        word-break: break-word; 
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+
+    .gift-price {
+      text-align: center;
+
+    }
+  }
+
+  /*
+  .gift-feeling {
+    border-top: 1px solid #cacaca;
+
+    .btn {
+      border-radius: 0;
+      border: 0;
+    }
+  }
+  */
+}
+
+.recommendation-more {
+  text-align: center;
+  font-size: 2em;
+  margin-top: 30px;
+}
