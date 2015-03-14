@@ -1,0 +1,54 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Macaron</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Action</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <%= form_for @fund_form, url: funds_path do |f| %>
+    <%= f.hidden_field :friend_id %>
+    <%= f.hidden_field :gift_id %>
+    <div class="col-md-8 gift-description">
+      <div class="gift-image" style="background-image: url(<%= @gift.image %>)"></div>
+    </div>
+    <div class="col-md-4">
+      <div class="friend-information">
+        <h4 class="gift-name"><%= @gift.name %></h4>
+        <span class="gift-price pull-left"><%= number_to_currency @gift.price, unit: '₩', precision: 0 %></span>
+        <small class="pull-right">To <%= @friend.name %></small>
+        <div class="clearfix"></div>
+      </div>
+      <div class="friend-information">
+        <div class="form-group">
+          <%= f.label :contact, "주최자 연락처" %>
+          <%= f.text_field :contact, class: "form-control", placeholder: "전화번호나 이메일을 입력해주세요." %>
+        </div>
+        <div class="form-group">
+          <%= f.label :situation, '상황' %>
+          <%= f.select :situation, options_for_select(FundForm::SITUATIONS), {}, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, '설명' %>
+          <%= f.text_area :description, class: 'form-control', rows: 14, placeholder: "이 모금에 대한 설명을 작성해주세요." %> 
+        </div>
+        <%= submit_tag "선물 시작하기", class: 'btn btn-lg btn-success btn-block'%>
+      </div>
+    </div>
+  <% end %>
+</div>

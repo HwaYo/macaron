@@ -52,3 +52,4 @@ gem "omniauth-facebook"
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'koala', '~> 1.11.1'
 gem 'kaminari'
+gem 'virtus', '~> 1.0.4'

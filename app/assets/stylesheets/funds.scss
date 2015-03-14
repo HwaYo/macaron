@@ -1,0 +1,24 @@
+.gift-name {
+  margin-bottom: 20px;
+}
+
+.gift-price {
+  font-weight: bold;
+}
+
+.gift-description {
+  border: 1px solid #cacaca;
+  border-radius: 6px;
+  .gift-image {
+    width: 100%;
+    height: 647px;
+    background-size: cover;  
+  }
+}
+
+.friend-information {
+  border: 1px solid #cacaca;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 8px;
+}

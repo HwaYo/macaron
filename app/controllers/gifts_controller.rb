@@ -1,8 +1,4 @@
 class GiftsController < ApplicationController
-  def new
-    @gift = Gift.find(params[:id])
-  end
-
   def recommendation
     @friend = Friend.find(params[:friend_id])
     @user = User.find_by_id(@friend.user_id)

@@ -1,5 +1,5 @@
 <div class="col-md-3 gift-card">
-  <%= link_to new_gift_path(gift.id) do %>
+  <%= link_to new_fund_path(gift_id: gift.id, friend_id: params[:friend_id]) do %>
     <div class="recommendation-item">
       <div class="gift-image" style="background-image: url(<%= gift.image %>)"></div>
       <div class="gift-info">
