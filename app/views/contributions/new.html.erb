@@ -1,5 +1,6 @@
 <div class="cont-container container">
 <h3 class="page-header">선물 참여하기</h3>
+  <span>최대 참여 가능 금액은 <%= number_to_currency @fund.remain_amount, unit: '원', precision: 0, format: '%n%u' %>입니다.</span>
   <div class="row">
     <div class="cont-form-container col-md-8">
       <%= form_for @contribution_form, url: fund_contributions_path do |f| %>
@@ -11,7 +12,7 @@
             <div class="form-inline pull-right">
               <div class="input-group">
                 <%= f.label :amount, class: "sr-only" %>
-                <%= f.text_field :amount, class: "form-control input-lg", type: "number", max: @fund.remain_amount %>
+                <%= f.text_field :amount, class: "form-control input-lg", type: "number", max: @fund.remain_amount, required: true %>
                 <div class="input-group-addon">원</div>
               </div>
             </div>
@@ -19,8 +20,8 @@
 
           <div class="contacts">
             <div class="form-inline input-group">
-              <%= f.text_field :payment, class: "form-control", id: "name", placeholder: "입금자명" %>
-              <%= f.text_field :contact, class: "form-control pull-right", id: "phone", placeholder: "연락 가능한 전화번호" %>
+              <%= f.text_field :payment, class: "form-control", id: "name", placeholder: "입금자명", required: true %>
+              <%= f.text_field :contact, class: "form-control pull-right", id: "phone", placeholder: "연락 가능한 전화번호", required: true %>
             </div>
             <p>작성한 전화번호로 입금 및 배송 확인 문자가 전송됩니다</p>
           </div>

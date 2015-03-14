@@ -51,7 +51,7 @@ private
   end
 
   def not_over_remain_amount
-    if self.fund.remain_amount < amount
+    if amount.present? and self.fund.remain_amount < amount
       errors.add(:amount, "최대 참여 가능 금액을 초과하였습니다.")
     end
   end
