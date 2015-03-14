@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <meta property="og:image" content="<%= @fund.gift.image %>">
+  <meta property="og:description" content="<%= @fund.description %>">
+<% end %>
 <div class="container">
     <div class="col-md-8 gift-description">
       <div class="gift-image" style="background-image: url(<%= @fund.gift.image %>)"></div>
