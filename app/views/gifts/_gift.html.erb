@@ -3,11 +3,11 @@
     <div class="gift-image" style="background-image: url(<%= gift.image %>)"></div>
     <div class="gift-info">
       <div class="gift-name">
-        <%= gift.name %>
+        <h4><%= gift.name %></h4>
       </div>
-      <div class="gift-price">
-        <%= gift.price %>
-      </div>
+      <p class="gift-price">
+        <%= number_to_currency gift.price, unit: '₩ ', precision: 0 %>
+      </p>
     </div>
     <!-- <div class="gift-feeling">
       <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">

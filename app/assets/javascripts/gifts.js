@@ -2,11 +2,21 @@ $(document).ready(function() {
   $(".gifts").infinitescroll({
     navSelector: "nav.pagination",
     nextSelector: "nav.pagination a[rel=next]",
-    itemSelector: ".gifts div.gift-card"
+    itemSelector: ".gifts div.gift-card"  
+  });
+
+  $(window).unbind('.infscr');
+  $('nav.pagination').click(function() {
+    $(document).trigger('retrieve.infscr');
+    return false;
+  });
+  $(document).ajaxError(function(e,xhr,opt) {
+    if(xhr.status==404)
+      $('nav.pagination').remove();
   });
 
   $('#recommend').on('click', function() {
-    jQuery('.gifts').infinitescroll('retrieve');
+    $('.gifts').infinitescroll('retrieve');
   });
   
 });
