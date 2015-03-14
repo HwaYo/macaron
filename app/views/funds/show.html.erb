@@ -5,13 +5,32 @@
 <div class="container">
     <div class="col-md-8 gift-description">
       <div class="gift-image" style="background-image: url(<%= @fund.gift.image %>)"></div>
-        <div>
-          <%= FundForm::SITUATIONS.detect {|a| a[1] == @fund.situation }[0] %>
+      <div class="description">
+        <article data-readmore="" aria-expanded="false" id="description" style="max-height: none; height:10px; word-break: break-all;">
+          <%= simple_format @fund.description, class: "lead" %>
+        </article>
+        <a href="#" data-readmore-toggle aria-controls="description">더보기</a>
+      </div>
+
+      <h3 class="page-header">축하 메시지</h3>
+      <% @fund.contributions.each_with_index do |contribution, index| %>
+        <div class="media">
+          <div class="media-left">
+            <a href="#">
+              <%= image_tag "http://graph.facebook.com/#{contribution.user.uid}/picture?height=64&width=64" %>
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= contribution.user.name %></h4>
+            <div class="contribution-message" data-readmore="" aria-expanded="false" id="message-<%= index %>" style="max-height: none; height: 10px; word-break: break-all;">
+              <%= contribution.message %>
+            </div>
+            <a href="#" data-readmore-toggle aria-controls="message-<%= index %>">더보기</a>
+          </div>
         </div>
-        <div>
-          <%= @fund.description %>
-        </div>
+      <% end %>
     </div>
+    
     <div class="col-md-4">
       <div class="friend-information">
         <h3>받는 사람</h3>
@@ -25,7 +44,7 @@
       </div>
       <div class="friend-information">
         <div class="contribute-button">
-          <%= link_to "참여하기", new_fund_contribution_path(@fund), class: 'btn btn-lg btn-success btn-block pull-right'%>
+          <%= link_to "#{@fund.friend.name} 에게 선물하기", new_fund_contribution_path(@fund), class: 'btn btn-lg btn-success btn-block pull-right'%>
         </div>
       </div>
       <div class="friend-information">
@@ -47,7 +66,7 @@
             <div>
               <% contributions.each do |contribution| %>
                 <div class="contributor-image pull-left">
-                  <%= image_tag "http://graph.facebook.com/#{ contribution.user.uid}/picture?height=60&width=60" %>
+                  <%= image_tag "http://graph.facebook.com/#{ contribution.user.uid}/picture?height=1000&width=1000" %>
                 </div>
               <% end %>
             </div>
