@@ -22,12 +22,12 @@
           </div>
         </div>
         <br/>
-        <a class="sns-button" href="http://www.facebook.com/share.php?u=http://127.0.0.1:3000<%= request.original_fullpath %>" onclick="return fbs_click()" target="_blank"><%= image_tag "fb-square.png", size: "40x40" %></a>
+        <a class="sns-button" href="http://www.facebook.com/share.php?u=<%= request.original_url %>" onclick="return fbs_click()" target="_blank"><%= image_tag "fb-square.png", size: "40x40" %></a>
         <a class="sns-button" href="https://twitter.com/share?hashtags=Macaron,선물&text=OOO님을 위해 함께 선물을 준비해요!"><%= image_tag "twitter-square.png", size: "40x40" %></a>
       </div>
     </div>
   </div>
-  
+
   <script>
     $(document).ready(function(){
       var client = new ZeroClipboard( $("#share-btn") );
