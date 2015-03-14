@@ -1,1 +1,41 @@
-<%= @gift.inspect %>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Macaron</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Action</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="col-md-8 gift-description" style="background-color: red;">
+    <div>
+    <h4>상품설명</h4>
+    <div class="gift-image" style="background-image: url(<%= @gift.image %>)"></div>
+    </div>
+    <div>
+      <h4><%= @gift.name %></h4>
+      <span><%= number_to_currency @gift.price, unit: '₩ ', precision: 0 %></span>
+    </div>
+    <div>
+      <%= select_tag 'situation', options_for_select(['생일', '백일'], '생일'), class: 'form-control' %>
+      <%= text_area_tag 'gift-description', nil, class: 'form-control', rows: 10%> 
+    </div>
+  </div>
+  <div class="col-md-4" style="background-color: blue;">
+    
+  </div>
+</div>
