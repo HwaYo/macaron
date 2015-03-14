@@ -1,0 +1,77 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "http://connect.facebook.net/ko_KR/sdk.js#xfbml=1&appId=1562660880653325&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+</script>
+
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+<div class="share-container">
+  <div>
+    <div class="panel panel-default" style="border:none;">
+      <div class="panel-body">
+        <div class="input-group">
+          <input class="form-control" value="<%= Googl.shorten(request.original_url, nil, "AIzaSyD2MQg2ZcgjFOtI-aTDktHKR6dm5K76A6Q").short_url %>"></input>
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default">Share</button>
+          </div>
+        </div>
+        <br/>
+        <span>
+          <a href="http://www.facebook.com/share.php?u=http://127.0.0.1:3000<%= request.original_fullpath %>" onclick="return fbs_click()" target="_blank">
+          <%= image_tag "fb-square.png", size: "40x40" %>
+        </a>
+        </span>
+        <span>
+          <a href="https://twitter.com/share?hashtags=Macaron,선물&text=OOO님을 위해 함께 선물을 준비해요!"><%= image_tag "twitter-square.png", size: "40x40" %></a>
+        </span>
+        <span>
+          <a href='#'><img id="kakao-login" src="<%= asset_path('kakao_story.png') %>" style="width: 40px; height: 40px;"/></a>
+        </span>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    Kakao.init('83bcbdb62e754de52534c726ece4f0f7');
+    $(document).ready(function(){
+      $('#kakao-login').on('click', function(){
+        console.log('story click')
+        Kakao.Auth.login({
+          success: function() {
+            Kakao.API.request( {
+              url : '/v1/api/story/linkinfo',
+              data : {
+                // needs to be fixed
+                url : '<%= Googl.shorten(request.original_url, nil, "AIzaSyD2MQg2ZcgjFOtI-aTDktHKR6dm5K76A6Q").short_url %>'
+              }
+            }).then(function(res) {
+              return Kakao.API.request( {
+                url : '/v1/api/story/post/link',
+                data : {
+                  link_info : res
+                }
+              });
+            }).then(function(res) {
+              return Kakao.API.request( {
+                url : '/v1/api/story/mystory',
+                data : { id : res.id }
+              });
+            }).then(function(res) {
+              alert(res.url);
+            }, function (err) {
+              alert(JSON.stringify(err));
+            });
+          }
+        });
+      });
+    });
+  </script>
+
+</div>
