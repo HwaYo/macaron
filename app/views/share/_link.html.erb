@@ -53,32 +53,16 @@
         $(this).attr( "data-original-title", "Copy to Clipboard" );
       });
       $('#kakao-login').on('click', function(){
-        console.log('story click')
+        console.log('story click');
         Kakao.Auth.login({
           success: function() {
-            Kakao.API.request( {
-              url : '/v1/api/story/linkinfo',
+            response = Kakao.API.request( {
+              url : '/v1/api/story/post/note',
               data : {
-                // needs to be fixed
-                url : '<%= Googl.shorten(request.original_url, nil, "AIzaSyD2MQg2ZcgjFOtI-aTDktHKR6dm5K76A6Q").short_url %>'
+                content : '<%= Googl.shorten(request.original_url, nil, "AIzaSyD2MQg2ZcgjFOtI-aTDktHKR6dm5K76A6Q").short_url %>'
               }
-            }).then(function(res) {
-              return Kakao.API.request( {
-                url : '/v1/api/story/post/link',
-                data : {
-                  link_info : res
-                }
-              });
-            }).then(function(res) {
-              return Kakao.API.request( {
-                url : '/v1/api/story/mystory',
-                data : { id : res.id }
-              });
-            }).then(function(res) {
-              alert(res.url);
-            }, function (err) {
-              alert(JSON.stringify(err));
-            });
+            })
+            alert("스토리 아이디" + response.id);
           }
         });
       });

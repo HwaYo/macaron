@@ -1,5 +1,5 @@
-<% content_for :head do %>
-  <meta property="og:image" content="http://www.tjmartell.org/lib/kcfinder/upload/images/gift.jpeg">
+<% content_for :meta do %>
+  <meta property="og:image" content="<%= @fund.friend.profile_image %>">
   <meta property="og:description" content="<%= @fund.description %>">
 <% end %>
 <div class="container">
@@ -15,8 +15,8 @@
     <div class="col-md-4">
       <div class="friend-information">
         <h3>받는 사람</h3>
-        <%= image_tag @fund.user.image %>
-        <%= @fund.user.name %>
+        <%= image_tag @fund.friend.profile_image %>
+        <%= @fund.friend.name %>
       </div>
       <div class="friend-information">
         <h4 class="gift-name"><%= @fund.gift.name %></h4>
