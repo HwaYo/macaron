@@ -3,11 +3,11 @@
 }
 
 .gift-price {
+  font-size: 20px;
   font-weight: bold;
 }
 
 .gift-description {
-  border-radius: 6px;
   border-right: 1px solid #f0f0f0;
   
   .gift-image {
@@ -21,10 +21,39 @@
   border-radius: 6px;
   padding: 10px;
   margin-bottom: 8px;
+
+  textarea{
+    resize:none;
+  }
 }
 
 #new-fund {
   .new-fund-modal {
     width: 1180px;
   }  
+}
+
+.contributors {
+  .contributor-image {
+    padding-bottom: 3.3px;
+    width: 24.25%;
+    margin-left: 1%;
+
+    img {
+      max-width: 100%;
+      border-radius: 6px;
+    }
+  }
+
+  .contributor-image:first-child {
+    margin-left: 0;
+  }
+}
+
+.contribute-button {
+  margin-bottom: 30px;
+}
+
+.contribute-amount {
+  margin: 40px 0 30px 0;
 }
