@@ -2,7 +2,7 @@
   <meta property="og:image" content="<%= @fund.friend.profile_image %>">
   <meta property="og:description" content="<%= @fund.description %>">
 <% end %>
-<div class="container">
+<div class="container fund-container">
     <div class="col-md-8 gift-description">
       <div class="gift-image" style="background-image: url(<%= @fund.gift.image %>)"></div>
       <div class="description">
@@ -17,7 +17,7 @@
         <div class="media">
           <div class="media-left">
             <a href="#">
-              <%= image_tag "http://graph.facebook.com/#{contribution.user.uid}/picture?height=64&width=64" %>
+              <%= image_tag "http://graph.facebook.com/#{contribution.user.uid}/picture?height=64&width=64", size:"64x64" %>
             </a>
           </div>
           <div class="media-body">
