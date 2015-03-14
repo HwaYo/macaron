@@ -11,4 +11,6 @@ Rails.application.routes.draw do
       get 'recommendation'
     end
   end
+
+  resources :friends, only: [:new, :index]
 end
