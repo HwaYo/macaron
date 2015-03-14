@@ -1,0 +1,44 @@
+// Place all the styles related to the backers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.cont-container{
+  border: 1px solid black;
+  padding: 20px;
+  .cont-form-container{
+    border: 1px solid black;
+    padding:20px;
+
+    .contribution-money{
+      .form-inline{
+        display:inline;
+      }
+
+      .contacts{
+        #name{
+          width:34%;
+        }
+        #phone{
+          width:65%;
+        }
+      }
+
+
+    }
+
+    .submit-btn{
+      text-align: center;
+      margin-top: 15px;
+    }
+
+  }
+
+  .gift-container{
+    border: 1px solid black;
+    padding: 20px;
+  }
+
+}
+
+
+

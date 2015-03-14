@@ -14,16 +14,23 @@
     </div>
     <div class="col-md-4">
       <div class="friend-information">
+        <h3>받는 사람</h3>
+        <%= image_tag @fund.user.image %>
+        <%= @fund.user.name %>
+      </div>
+      <div class="friend-information">
         <h4 class="gift-name"><%= @fund.gift.name %></h4>
         <span class="gift-price pull-left"><%= number_to_currency @fund.gift.price, unit: '₩', precision: 0 %></span>
-        <small class="pull-right">To <%= @fund.friend.name %></small>
         <div class="clearfix"></div>
       </div>
       <div class="friend-information">
-        <%= submit_tag "참여하기", class: 'btn btn-lg btn-success btn-block pull-right'%>
-
-        <h4>참여현황</h4>
-        <h2><%= number_to_currency 100000, unit: '원', precision: 0, format: '%n%u' %></h2>
+        <div class="contribute-button">
+          <%= link_to "참여하기", new_fund_contribution_path(@fund), class: 'btn btn-lg btn-success btn-block pull-right'%>
+        </div>
+      </div>
+      <div class="friend-information">
+        <h3 class="page-header">모금 현황</h3>
+        <h2 class="text-center contribute-amount"><%= number_to_currency 100000, unit: '원', precision: 0, format: '%n%u' %></h2>
 
         <div class="progress">
           <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
@@ -31,18 +38,22 @@
           </div>
         </div>
 
+        <h3 class="page-header">공유하기</h3>
+        <%= render partial: 'share/link' %>
+
         <div class="contributors">
-          <% (@fund.contributions*10).each_slice(4) do |contributions| %>
+          <h3 class="page-header">참여자 <small>총 <%= @fund.contributions.size %>명</small></h3>
+          <% @fund.contributions.each_slice(4) do |contributions| %>
             <div>
               <% contributions.each do |contribution| %>
-                <div class="col-sm-3 col-md-3 contributor-image">
-                  <%= image_tag "http://graph.facebook.com/#{ contribution.user.uid}/picture?height=30&width=30" %>
+                <div class="contributor-image pull-left">
+                  <%= image_tag "http://graph.facebook.com/#{ contribution.user.uid}/picture?height=60&width=60" %>
                 </div>
               <% end %>
             </div>
           <% end %>
         </div>
+        <div class="clearfix"></div>
       </div>
-      <%= render partial: 'share/link' %>
     </div>
 </div>
