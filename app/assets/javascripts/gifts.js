@@ -2,7 +2,7 @@ $(document).on('ready page:load', function() {
   $(".gifts").infinitescroll({
     navSelector: "nav.pagination",
     nextSelector: "nav.pagination a[rel=next]",
-    itemSelector: ".gifts div.gift-card"  
+    itemSelector: ".gifts div.gift-card"
   });
 
   $(window).unbind('.infscr');
