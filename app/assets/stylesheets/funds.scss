@@ -28,3 +28,19 @@
     width: 1180px;
   }  
 }
+
+.contributors {
+  .contributor-image {
+    padding-left: 0;
+    padding-right: 15px;
+    text-align: center;
+    margin-bottom: 10px;
+
+    img {
+      width: 100%
+    }
+  }
+  .contributor-image:last-child {
+    padding-right: 0;
+  }
+}
