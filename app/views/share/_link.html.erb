@@ -17,9 +17,9 @@
     <div class="panel panel-default" style="border:none;">
       <div class="panel-body">
         <div class="input-group">
-          <input class="form-control" value="<%= Googl.shorten(request.original_url, nil, "AIzaSyD2MQg2ZcgjFOtI-aTDktHKR6dm5K76A6Q").short_url %>"></input>
+          <input class="form-control" value="<%= Googl.shorten(request.original_url, nil, "AIzaSyD2MQg2ZcgjFOtI-aTDktHKR6dm5K76A6Q").short_url %>" disabled>
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default">Share</button>
+            <button type="button" id="share-btn" data-clipboard-text="<%= Googl.shorten(request.original_url, nil, "AIzaSyD2MQg2ZcgjFOtI-aTDktHKR6dm5K76A6Q").short_url %>" class="btn btn-default" title="Copy to Clipboard" data-toggle="tooltip" data-placement="top">Share</button>
           </div>
         </div>
         <br/>
@@ -41,6 +41,17 @@
   <script>
     Kakao.init('83bcbdb62e754de52534c726ece4f0f7');
     $(document).ready(function(){
+      var client = new ZeroClipboard( $("#share-btn") );
+      $('#share-btn').on('click', function(){
+        $(this).attr( "data-original-title", "Copied!" );
+        $(this).tooltip('show');
+      });
+      $('#share-btn').mouseover( function(){
+        $(this).tooltip('show');
+      });
+      $('#share-btn').mouseout( function(){
+        $(this).attr( "data-original-title", "Copy to Clipboard" );
+      });
       $('#kakao-login').on('click', function(){
         console.log('story click')
         Kakao.Auth.login({
