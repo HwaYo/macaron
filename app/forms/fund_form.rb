@@ -1,5 +1,5 @@
 class FundForm
-  include Virtus
+  include Virtus.model
 
   extend ActiveModel::Naming
   include ActiveModel::Conversion
@@ -7,10 +7,9 @@ class FundForm
 
   attr_reader :fund
   attr_reader :user
-  
+
   attr_reader :gift_id
   attr_reader :friend_id
-
 
   attribute :description, String
   attribute :situation, Integer
@@ -41,8 +40,8 @@ class FundForm
 private
   def persist!
     @user = User.find(user_id)
-    @user.update!({
-      contact: contact  
+    @user.update_attributes!({
+      contact: contact
     })
 
     @fund = Fund.create!({

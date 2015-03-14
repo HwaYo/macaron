@@ -8,7 +8,7 @@ class FundsController < ApplicationController
   end
 
   def create
-    @fund_form = FundForm.new(params[:fund_form].merge(user_id: current_user.id))
+    @fund_form = FundForm.new(fund_form_params)
 
     if @fund_form.save
       redirect_to fund_path(@fund_form.fund)
@@ -21,5 +21,10 @@ class FundsController < ApplicationController
 
   def show
     @fund = Fund.find(params[:id])
+  end
+
+private
+  def fund_form_params
+    params.require(:fund_form).merge(user_id: current_user.id)
   end
 end
