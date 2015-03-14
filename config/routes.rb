@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :friends, only: [:new, :index]
-  resources :funds, only: [:new, :create, :show]
-  resources :contributions, only: [:new]
+  resources :funds, only: [:new, :create, :show] do
+    resources :contributions, only: [:new]
+  end
 end
