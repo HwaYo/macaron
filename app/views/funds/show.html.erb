@@ -28,11 +28,12 @@
         </div>
 
         <div class="contributors">
-          <% (@fund.contributions*10).each_slice(4) do |contributions| %>
+          <h3 class="page-header">참여자 <small>총 <%= @fund.contributions.size %>명</small></h3>
+          <% @fund.contributions.each_slice(4) do |contributions| %>
             <div>
               <% contributions.each do |contribution| %>
-                <div class="col-sm-3 col-md-3 contributor-image">
-                  <%= image_tag "http://graph.facebook.com/#{ contribution.user.uid}/picture?height=30&width=30" %>
+                <div class="contributor-image pull-left">
+                  <%= image_tag "http://graph.facebook.com/#{ contribution.user.uid}/picture?height=60&width=60" %>
                 </div>
               <% end %>
             </div>

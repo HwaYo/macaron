@@ -31,16 +31,17 @@
 
 .contributors {
   .contributor-image {
-    padding-left: 0;
-    padding-right: 15px;
-    text-align: center;
-    margin-bottom: 10px;
+    padding-bottom: 3.3px;
+    width: 24.25%;
+    margin-left: 1%;
 
     img {
-      width: 100%
+      max-width: 100%;
+      border-radius: 6px;
     }
   }
-  .contributor-image:last-child {
-    padding-right: 0;
+
+  .contributor-image:first-child {
+    margin-left: 0;
   }
 }
