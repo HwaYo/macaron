@@ -1,1 +1,59 @@
-<%= @fund.inspect %>
+<% content_for :meta do %>
+  <meta property="og:image" content="<%= @fund.friend.profile_image %>">
+  <meta property="og:description" content="<%= @fund.description %>">
+<% end %>
+<div class="container">
+    <div class="col-md-8 gift-description">
+      <div class="gift-image" style="background-image: url(<%= @fund.gift.image %>)"></div>
+        <div>
+          <%= FundForm::SITUATIONS.detect {|a| a[1] == @fund.situation }[0] %>
+        </div>
+        <div>
+          <%= @fund.description %>
+        </div>
+    </div>
+    <div class="col-md-4">
+      <div class="friend-information">
+        <h3>받는 사람</h3>
+        <%= image_tag @fund.friend.profile_image %>
+        <%= @fund.friend.name %>
+      </div>
+      <div class="friend-information">
+        <h4 class="gift-name"><%= @fund.gift.name %></h4>
+        <span class="gift-price pull-left"><%= number_to_currency @fund.gift.price, unit: '₩', precision: 0 %></span>
+        <div class="clearfix"></div>
+      </div>
+      <div class="friend-information">
+        <div class="contribute-button">
+          <%= link_to "참여하기", new_fund_contribution_path(@fund), class: 'btn btn-lg btn-success btn-block pull-right'%>
+        </div>
+      </div>
+      <div class="friend-information">
+        <h3 class="page-header">모금 현황</h3>
+        <h2 class="text-center contribute-amount"><%= number_to_currency 100000, unit: '원', precision: 0, format: '%n%u' %></h2>
+
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+            60%
+          </div>
+        </div>
+
+        <h3 class="page-header">공유하기</h3>
+        <%= render partial: 'share/link' %>
+
+        <div class="contributors">
+          <h3 class="page-header">참여자 <small>총 <%= @fund.contributions.size %>명</small></h3>
+          <% @fund.contributions.each_slice(4) do |contributions| %>
+            <div>
+              <% contributions.each do |contribution| %>
+                <div class="contributor-image pull-left">
+                  <%= image_tag "http://graph.facebook.com/#{ contribution.user.uid}/picture?height=60&width=60" %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+</div>
