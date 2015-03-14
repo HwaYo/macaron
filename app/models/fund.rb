@@ -11,4 +11,8 @@ class Fund < ActiveRecord::Base
   def remain_amount
     @remain_amount ||= [0, self.gift.price - self.total_amount].max
   end
+
+  def percentage
+    total_amount.to_f / self.gift.price.to_f * 100
+  end
 end
