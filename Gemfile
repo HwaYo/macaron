@@ -43,15 +43,17 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
-  gem 'rails_12factor'
+  gem 'pg', '~> 0.18.1'
+  gem 'rails_12factor', '~> 0.0.3'
 end
 
-gem "omniauth"
-gem "omniauth-facebook"
+gem 'omniauth', '~> 1.2.2'
+gem 'omniauth-facebook', '~> 2.0.1'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'koala', '~> 1.11.1'
-gem 'kaminari'
+gem 'kaminari', '~> 0.16.3'
 gem 'virtus', '~> 1.0.4'
-gem 'googl'
+gem 'googl', '~> 0.7.0'
 gem 'zeroclipboard-rails'
+gem 'newrelic_rpm', '~> 3.10.0.279'
+
