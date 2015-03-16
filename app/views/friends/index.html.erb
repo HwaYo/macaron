@@ -8,7 +8,7 @@
       <div class="col-sm-4 col-md-2">
         <%= link_to new_friend_path(uid: @user.uid, name: @user.name) do %>
         <div class="thumbnail">
-          <img src="http://graph.facebook.com/<%= @user.uid %>/picture?height=192&width=192">
+          <%= facebook_image_tag_by_uid(@user.uid, width: 192, height: 192) %>
           <div class="caption">
             <p>나에게 선물하기</p>
           </div>
@@ -20,7 +20,7 @@
       <div class="col-sm-4 col-md-2">
         <%= link_to new_friend_path(uid: f['id'], name: f['name']) do %>
         <div class="thumbnail">
-          <img src="http://graph.facebook.com/<%= f["id"] %>/picture?height=192&width=192">
+          <%= facebook_image_tag_by_uid(f.id, width: 192, height: 192) %>
           <div class="caption">
             <p><%= f["name"] %></p>
           </div>

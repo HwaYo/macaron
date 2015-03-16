@@ -8,7 +8,7 @@
     <div class="col-md-4">
       <div class="friend-information">
         <h4 class="gift-name"><%= @gift.name %></h4>
-        <span class="gift-price pull-left"><%= number_to_currency @gift.price, unit: '₩', precision: 0 %></span>
+        <span class="gift-price pull-left"><%= number_to_won @gift.price %></span>
         <small class="pull-right">To <%= @friend.name %></small>
         <div class="clearfix"></div>
       </div>

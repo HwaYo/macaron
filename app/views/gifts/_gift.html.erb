@@ -6,7 +6,7 @@
         <h4><%= gift.name %></h4>
       </div>
       <p class="gift-price">
-        <%= number_to_currency gift.price, unit: '₩ ', precision: 0 %>
+        <%= number_to_won gift.price %>
       </p>
     </div>
     <!-- <div class="gift-feeling">

@@ -39,7 +39,7 @@
       </div>
       <div class="friend-information">
         <h4 class="gift-name"><%= @fund.gift.name %></h4>
-        <span class="gift-price pull-left"><%= number_to_currency @fund.gift.price, unit: '₩', precision: 0 %></span>
+        <span class="gift-price pull-left"><%= number_to_won @fund.gift.price %></span>
         <div class="clearfix"></div>
       </div>
       <div class="friend-information">
@@ -49,7 +49,7 @@
       </div>
       <div class="friend-information">
         <h3 class="page-header">모금 현황</h3>
-        <h2 class="text-center contribute-amount"><%= number_to_currency @fund.total_amount, unit: '원', precision: 0, format: '%n%u' %></h2>
+        <h2 class="text-center contribute-amount"><%= number_to_won @fund.total_amount %></h2>
 
         <div class="progress">
           <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @fund.percentage %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @fund.percentage %>%;">
@@ -66,7 +66,7 @@
             <div>
               <% contributions.each do |contribution| %>
                 <div class="contributor-image pull-left">
-                  <%= image_tag "http://graph.facebook.com/#{ contribution.user.uid}/picture?height=1000&width=1000" %>
+                  <%= facebook_image_tag_by_uid(contribution.user.uid, width: 1000, height: 1000)
                 </div>
               <% end %>
             </div>
