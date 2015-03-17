@@ -5,7 +5,7 @@
   </div>
   <div class="friends-grid">
     <div class="row">
-      <div class="col-sm-4 col-md-2">
+      <div class="col-sm-4 col-md-2 col-xs-6">
         <%= link_to new_friend_path(uid: @user.uid, name: @user.name) do %>
         <div class="thumbnail">
           <img src="http://graph.facebook.com/<%= @user.uid %>/picture?height=192&width=192">
@@ -17,7 +17,7 @@
       </div>
 
     <% (@friends*200).each do |f| %>
-      <div class="col-sm-4 col-md-2">
+      <div class="col-sm-4 col-md-2 col-xs-6">
         <%= link_to new_friend_path(uid: f['id'], name: f['name']) do %>
         <div class="thumbnail">
           <img src="http://graph.facebook.com/<%= f["id"] %>/picture?height=192&width=192">
