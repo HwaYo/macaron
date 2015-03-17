@@ -4,8 +4,12 @@ class Fund < ActiveRecord::Base
   belongs_to :friend
   has_many :contributions
 
+  def complete?
+    remain_amount <= 0
+  end
+
   def total_amount
-    @total_amount ||= self.contributions.pluck(:amount).reduce(0, :+)
+    @total_amount ||= self.contributions.approved.pluck(:amount).reduce(0, :+)
   end
 
   def remain_amount

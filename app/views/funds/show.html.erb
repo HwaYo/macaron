@@ -44,7 +44,11 @@
       </div>
       <div class="friend-information">
         <div class="contribute-button">
-          <%= link_to "#{@fund.friend.name} 에게 선물하기", new_fund_contribution_path(@fund), class: 'btn btn-lg btn-success btn-block pull-right'%>
+          <% if @fund.complete? %>
+            <%= link_to "모금 완료!", new_fund_contribution_path(@fund), class: 'btn btn-lg btn-success btn-block pull-right', disabled: true %>
+          <% else %>
+            <%= link_to "#{@fund.friend.name} 에게 선물하기", new_fund_contribution_path(@fund), class: 'btn btn-lg btn-success btn-block pull-right' %>
+          <% end %>
         </div>
       </div>
       <div class="friend-information">

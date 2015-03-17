@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314144532) do
+ActiveRecord::Schema.define(version: 20150317023139) do
 
   create_table "contributions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "fund_id"
     t.integer  "amount"
     t.text     "message"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "payment"
+    t.boolean  "approved",   default: false
   end
 
   create_table "friends", force: :cascade do |t|

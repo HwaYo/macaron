@@ -17,6 +17,7 @@ class ContributionForm
     greater_than_or_equal_to: 0
   }
   validate :not_over_remain_amount
+  validate :no_less_than_equal_zero_amount
 
   def fund
     @fund = Fund.find(fund_id)
@@ -53,6 +54,12 @@ private
   def not_over_remain_amount
     if amount.present? and self.fund.remain_amount < amount
       errors.add(:amount, "최대 참여 가능 금액을 초과하였습니다.")
+    end
+  end
+
+  def no_less_than_equal_zero_amount
+    if amount.present? and amount <= 0
+      errors.add(:amount, "0원 이하로 낼 수 없습니다.")
     end
   end
 end
