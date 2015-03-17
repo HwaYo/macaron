@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
 
+  before_action :require_login
+
+protected
+  def require_login
+    origin = request.original_fullpath
+    redirect_to root_path(origin: origin) unless current_user
+  end
+
 private
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

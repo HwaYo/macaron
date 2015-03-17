@@ -1,10 +1,12 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login
+
   def create
     auth = request.env["omniauth.auth"]
     user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
     session[:user_id] = user.id
 
-    redirect_to friends_path, :notice => "Signed in!"
+    redirect_to request.env['omniauth.origin'] || friends_path, :notice => "Signed in!"
   end
 
   def destroy
