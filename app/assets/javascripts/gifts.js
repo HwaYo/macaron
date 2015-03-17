@@ -6,10 +6,12 @@ $(document).on('ready page:load', function() {
   });
 
   $(window).unbind('.infscr');
-  $('nav.pagination').click(function() {
+
+  $('nav.pagination').on('click', function() {
     $(document).trigger('retrieve.infscr');
     return false;
   });
+
   $(document).ajaxError(function(e,xhr,opt) {
     if(xhr.status==404)
       $('nav.pagination').remove();
@@ -24,7 +26,6 @@ $(document).on('ready page:load', function() {
       friend_id: $(this).data("friend-id"),
       gift_id: $(this).data("gift-id")
     };
-    console.log(data);
     $.ajax({
       url: "/funds/new",
       data: data
